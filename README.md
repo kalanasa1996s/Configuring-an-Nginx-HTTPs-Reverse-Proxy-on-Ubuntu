@@ -38,7 +38,7 @@ Configuring an Nginx HTTPs Reverse Proxy on Ubuntu Bionic
 
 5.Copy the configuration from /etc/nginx/sites-available to /etc/nginx/sites-enabled. It is recommended to use a symbolic link.
 
-  ln -s /etc/nginx/sites-available/reverse-proxy.conf /etc/nginx/sites-enabled/reverse-proxy.conf
+      ln -s /etc/nginx/sites-available/reverse-proxy.conf /etc/nginx/sites-enabled/reverse-proxy.conf
   
 6.Test the Nginx configuration file
 
