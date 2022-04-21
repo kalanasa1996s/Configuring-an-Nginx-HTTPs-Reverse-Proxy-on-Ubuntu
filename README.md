@@ -23,17 +23,18 @@ Configuring an Nginx HTTPs Reverse Proxy on Ubuntu Bionic
     
 4.Paste the following Nginx configuration in the text editor. The proxy server redirects all incomming connections on port 80 to the Webfsd server, listening on port 8000. Edit the port value depending on the applications specific port.
   
-    server {
-        listen 80;
-        listen [::]:80;
+        server {
+             listen 80;
+             listen [::]:80;
 
-        access_log /var/log/nginx/reverse-access.log;
-        error_log /var/log/nginx/reverse-error.log;
+             server_name api.example.com; (create cname in cloudflare)
+             access_log /var/log/nginx/reverse-access.log;
+             error_log /var/log/nginx/reverse-error.log;
 
-        location / {
-                    proxy_pass http://127.0.0.1:8000;
-                    }
-                    }
+             location / {
+                    proxy_pass http://127.0.0.1:8086;
+        }
+       }
 
 
 5.Copy the configuration from /etc/nginx/sites-available to /etc/nginx/sites-enabled. It is recommended to use a symbolic link.
@@ -47,7 +48,7 @@ Configuring an Nginx HTTPs Reverse Proxy on Ubuntu Bionic
  
   #results
 
-  nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
-  nginx: configuration file /etc/nginx/nginx.conf test is successful
+        nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+        nginx: configuration file /etc/nginx/nginx.conf test is successful
   
   
